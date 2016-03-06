@@ -140,9 +140,6 @@ fn output_pcm() {
 
     let mut j=0;
     for i in (0_u64..u64::max_value()).cycle() {
-        if notes.len() > 10 {
-            panic!(format!("{:?}", notes));
-        }
         let sample = sine_waves(BASE_NOTE, &notes, i) *
                      (PCM_Sample::max_value() as f64);
 
