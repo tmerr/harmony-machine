@@ -110,25 +110,6 @@ fn step_notes(note_set: &[Frac], memory: &Memory) -> Vec<Frac> {
     best
 }
 
-fn main_loop() {
-    let mut notes = vec![Frac(1, 3), Frac(1, 2), Frac(1, 1)];
-    let mut memory = Memory::new();
-
-    loop {
-        //println!("notes: {:?}", notes);
-        let harmony = judge_harmony(&notes);
-        //println!("{}", harmony);
-        let novelty = judge_novelty(&notes, &memory);
-        //println!("{}", novelty);
-        let mut input = String::new();
-        //std::io::stdin().read_line(&mut input).unwrap();
-
-        forget(&mut memory);
-        notes = step_notes(&notes, &memory);
-        remember(&notes, &mut memory);
-    }
-}
-
 type PCM_Sample = i16;
 static PCM_HZ: u64 = 44100_u64;
 static STEPS_PER_SEC: u64 = 4;
